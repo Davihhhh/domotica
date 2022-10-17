@@ -12,6 +12,7 @@ namespace telecomando
 {
     public partial class Form1 : Form
     {
+        private Televisore tv;
         private Telecomando tel;
         int[] canale = new int[3];
         
@@ -20,10 +21,12 @@ namespace telecomando
         public Form1()
         {
             InitializeComponent();
-            tel = new Telecomando();
-            textBoxVolumeAttuale.Text = tel.GetVolume().ToString();
-            textBoxCanaleAttuale.Text = tel.GetCanale().ToString();
+
+            tv=new Televisore();
+            tel=new Telecomando(tv);
+                      
             setstatocolor();
+            modificatextbox();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -33,35 +36,69 @@ namespace telecomando
 
         private void setstatocolor()
         {
-            if (tel.GetStato())
+             if (tel.GetStato())
                 buttonStato.BackColor = Color.Green;
             else
                 buttonStato.BackColor = Color.Red;
         }
+        private void modificatextbox()
+        {
+            if(tel.GetStato())
+            {
+                textBoxVolumeAttuale.Text = tel.GetVolume().ToString();
+                textBoxCanaleAttuale.Text = tel.GetCanale().ToString();
+            }
+            else
+            {
+                textBoxVolumeAttuale.Text = "";
+                textBoxCanaleAttuale.Text = "";
+            }
+        }
         private void OnOff_Click(object sender, EventArgs e)
         {
-            tel.InvertiStatoTelevisione();
+            tel.InvertiStatoTelevisore();   
+            modificatextbox();
             setstatocolor();
         }
 
 
         private void AlzaVol_Click(object sender, EventArgs e)
         {
-            tel.AumentaVolume();
+            if (checkacceso())
+            {
+                tel.AumentaVolume();
+                modificatextbox();
+            }
+            else { }
         }
         private void AbbassaVol_Click(object sender, EventArgs e)
         {
-            tel.DiminuisciVolume();
+            if (checkacceso())
+            {
+                tel.DiminuisciVolume();
+                modificatextbox();
+            }
+            else { }
         }
 
 
         private void AumentaCan_Click(object sender, EventArgs e)
         {
-            tel.AumentaCanale();
+            if (checkacceso())
+            {
+                tel.AumentaCanale();
+                modificatextbox();
+            }
+            else { }
         }
         private void AbbassaCan_Click(object sender, EventArgs e)
         {
-            tel.DiminuisciCanale();
+            if (checkacceso())
+            {
+                tel.DiminuisciCanale();
+                modificatextbox();
+            }
+            else { }
         }
 
         private void zero_Click(object sender, EventArgs e)
