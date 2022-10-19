@@ -20,8 +20,7 @@ namespace telecomando
         {
             SetTV(TV);
         }
-        {
-        }
+        
         public Televisore GetTV()
         {
             return TV;
