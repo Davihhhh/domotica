@@ -147,7 +147,7 @@ namespace telecomando
         public string GetProduttore()
         {
             if (Produttore != null)
-                return Produttore;
+            return Produttore;
             else return null;
         }
         public string GetModello()
@@ -227,7 +227,7 @@ namespace telecomando
         {
             Produttore = "Unknown";
             Modello = "Unknown";
-            Funzionamento = new string[] { "Unknown" };               
+            Funzionamento = new string[] { "Unknown" };
         }
 
         public void SetStato(bool stato)

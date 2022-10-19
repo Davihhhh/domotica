@@ -20,9 +20,7 @@ namespace telecomando
         {
             SetTV(TV);
         }
-        public void SetTV(Televisore laTV)
         {
-            TV = laTV;
         }
         public Televisore GetTV()
         {
@@ -49,7 +47,7 @@ namespace telecomando
             TV.SetDefaultCanale();
         }
         public Telecomando(string modello)
-        {            
+        {
             TV.SetStato(false);
 
             TV.SetProduttore("Unknown");
@@ -64,8 +62,12 @@ namespace telecomando
             TV.SetDefaultRangeCanale();
             TV.SetDefaultCanale();
         }
+        public Telecomando(string modello)
+        {
+            TV.SetModello(modello);
+        }
         public Telecomando(string[] funzionamento)
-        {          
+        {
             TV.SetStato(false);
 
             TV.SetProduttore("Unknown");
@@ -135,7 +137,7 @@ namespace telecomando
         public string GetProduttore()
         {
             if (Produttore != null)
-                return Produttore;
+            return Produttore;
             else
                 return null;
         }
@@ -153,7 +155,7 @@ namespace telecomando
             else return null;
         }
         public bool GetStato()
-        { 
+        {
             return TV.GetStato();
         }
         public int GetVolume()
