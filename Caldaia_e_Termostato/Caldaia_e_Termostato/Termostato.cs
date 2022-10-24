@@ -8,114 +8,201 @@ namespace Caldaia_e_Termostato
 {
     public class Termostato
     {
-        string produttore;
-        string modello;
-        string dataInstallazione;
-        int numeroSerie;
-
-        bool acceso;
-        bool riscaldamento;
-
-        int temperaturaMaxCaldaia;
-        int temperaturaMinCaldaia;
-        int temperaturaAttualeCaldaia;
-
-        int temperaturaMaxAcqua;
-        int temperaturaMinAcqua;
-        int temperaturaAttualeAcqua;
+        private string _produttore;
+        public string Produttore
+        {
+            get{
+                 return _produttore;
+            }
+            set{
+                _produttore = value;
+            }
+        }      
                 
-
-        public string getProduttore()
+        private string _modello;
+        public string Modello
         {
-            return produttore;
-        }
-        public string getModello()
-        {
-            return modello;
-        }
-        public string getData_Installazione()
-        {
-            return dataInstallazione;
-        }
-        public int getNumero_Serie()
-        {
-            return numeroSerie;
+            get{
+                 return _modello;
+            }
+            set{
+                _modello = value;
+            }
         }
 
-
-        public int getTemperturaMaxCaldaia()
+        private string _dataInstallazione;
+        public string Data_Installazione
         {
-            return temperaturaMaxCaldaia;
-        }
-        public int getTemperturaMinCaldaia()
-        {
-            return temperaturaMinCaldaia;
-        }
-        public int getTemperaturaAttualeCaldaia()
-        {
-            return temperaturaAttualeCaldaia;
+            get{
+                 return _dataInstallazione;
+            }
+            set{
+                _dataInstallazione = value;
+            }
         }
 
-
-        public int getTemperturaMaxAcqua()
+        private int _numeroSerie;
+        public int Numero_Serie
         {
-            return temperaturaMaxAcqua;
-        }
-        public int getTemperturaMinAcqua()
-        {
-            return temperaturaMinAcqua;
-        }
-        public int getTemperaturaAttualeAcqua()
-        {
-            return temperaturaAttualeAcqua;
+            get{
+                 return _numeroSerie;
+            }
+            set{
+                _numeroSerie = value;
+            }
         }
 
 
-        public void setProduttore(string prod)
+        private int _temperaturaMaxCaldaia;
+        public int TemperturaMaxCaldaia
         {
-            produttore = produ;
+            get{
+                 return _temperaturaMaxCaldaia;
+            }
+            set{
+                _temperaturaMaxCaldaia = value;
+            }
         }
-        public void setModello(string mod)
+
+        private int _temperaturaMinCaldaia;
+        public int TemperturaMinCaldaia
         {
-            modello = mod;
+            get{
+                 return _temperaturaMinCaldaia;
+            }
+            set{
+                _temperaturaMinCaldaia = value;
+            }            
         }
-        public void setData_Installazione(string data)
+
+        private int _temperaturaAttualeCaldaia;
+        public int TemperaturaAttualeCaldaia
         {
-            dataInstallazione = data;
-        }
-        public void setNumero_Serie(int num)
-        {
-            numeroSerie = num;
+            get{
+                 return _temperaturaAttualeCaldaia;
+            }
+            set{
+                _temperaturaAttualeCaldaia = value;
+            }   
+   
         }
 
 
-        public void setTemperturaMaxCaldaia(int temp)
+        private int _temperaturaMaxAcqua;
+        public int TemperturaMaxAcqua
         {
-            temperaturaMaxCaldaia = temp;
-        }
-        public void setTemperturaMinCaldaia(int temp)
-        {
-            temperaturaMinCaldaia = temp;
-        }
-        public void setTemperaturaAttualeCaldaia(int temp)
-        {
-            temperaturaAttualeCaldaia = temp;
-        }
-
-
-        public void setTemperturaMaxAcqua(int temp)
-        {
-            temperaturaMaxAcqua = temp;
-        }
-        public void setTemperturaMinAcqua(int temp)
-        {
-            temperaturaMinAcqua = temp;
-        }
-        public void setTemperaturaAttualeAcqua(int temp)
-        {
-            temperaturaAttualeAcqua = temp;
+            get{
+                 return _temperaturaMaxAcqua;
+            }
+            set{
+                _temperaturaMaxAcqua = value;
+            }   
+             
         }
 
+        private int _temperaturaMinAcqua;
+        public int TemperturaMinAcqua
+        {
+            get{
+                 return _temperaturaMinAcqua;
+            }
+            set{
+                _temperaturaMinAcqua = value;
+            }  
+        }
 
+        private int _temperaturaAttualeAcqua;
+        public int TemperaturaAttualeAcqua
+        {
+            get{
+                 return _temperaturaAttualeAcqua;
+            }
+            set{
+                _temperaturaAttualeAcqua = value;
+            }  
+        }
+
+        
+        private bool _stato;
+        public bool Stato
+        {
+            get { 
+            return _stato;
+            }
+            set
+            {
+                if (value)
+                    _stato = false;
+                else
+                    _stato = true;             
+            }
+        }
+
+        private bool _riscaldamento;
+        public bool Riscaldamento
+        {
+            get { 
+            return _riscaldamento;
+            }
+            set
+            {
+                if (value)
+                    _riscaldamento = false;
+                else
+                    _riscaldamento = true;  
+            }
+        }
+
+        private int checker = -10;
+
+        public Termostato()
+        {
+            _stato = false;
+            setDataNull();
+            setValueNull();
+        }
+        public Termostato(string produttore, string modello, string data, int numero)
+        {
+            _stato = false;
+            setValueNull();
+            _produttore = produttore;
+            _modello = modello;
+            _dataInstallazione = data;
+            _numeroSerie = numero;
+        }
+        public Termostato(string produttore, string modello, string data, int numero, int tempAttAcq, int tempMaxAcq, int tempMaxAcq, int tempMinAcq, int tempAttCal, int tempMaxCal, int tempMinCal)
+        {
+            _stato = false;            
+            _produttore = produttore;
+            _modello = modello;
+            _dataInstallazione = data;
+            _numeroSerie = numero;
+
+            _temperaturaAttualeAcqua = tempAttAcq;
+            _temperaturaMaxAcqua = tempMaxAcq;
+            _temperaturaMinAcqua = tempMinAcq;
+
+            _temperaturaAttualeCaldaia = tempAttCal;
+            _temperaturaMaxCaldaia = tempMaxCal;
+            _temperaturaMinCaldaia = tempMinCal;
+        }
+
+        private void setDataNull()
+        {
+            _produttore = null;
+            _modello = null;
+            _dataInstallazione = null;   
+            _numeroSerie = checker;
+        }
+        private void setValueNull()
+        {
+            _temperaturaAttualeAcqua = checker;
+            _temperaturaMaxAcqua = checker;
+            _temperaturaMinAcqua = checker;
+
+            _temperaturaAttualeCaldaia = checker;
+            _temperaturaMaxCaldaia = checker;
+            _temperaturaMinCaldaia = checker;
+        }
     }
 }
